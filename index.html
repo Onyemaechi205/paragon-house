@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paragon House</title>
+<meta name="description" content="Paragon House is a technology and business group building at the highest standard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#02040a;--mid:#050a18;--navy:#0b1634;--fg:#f5f7fb;--mut:#8c97ae;--silver:#c8d0dd;
+  --line:rgba(200,208,221,.16);--glow:rgba(46,78,160,.34);--navbg:rgba(5,10,24,.78);
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --pad:clamp(22px,5vw,72px);
+  color-scheme:dark;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --ink:#e9edf4;--mid:#f7f8fb;--navy:#dfe6f2;--fg:#0a1228;--mut:#566078;--silver:#4f5d78;
+  --line:rgba(10,18,40,.16);--glow:rgba(46,78,160,.14);--navbg:rgba(247,248,251,.82);color-scheme:light}}
+:root[data-theme="light"]{
+  --ink:#e9edf4;--mid:#f7f8fb;--navy:#dfe6f2;--fg:#0a1228;--mut:#566078;--silver:#4f5d78;
+  --line:rgba(10,18,40,.16);--glow:rgba(46,78,160,.14);--navbg:rgba(247,248,251,.82);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--mid);color:var(--fg);font:300 1.0625rem/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--silver);outline-offset:4px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.02}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(18px + env(safe-area-inset-top,0px)) var(--pad) 18px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.s{background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:500;font-size:.8rem;letter-spacing:.32em}
+.brand svg{width:22px;height:22px;stroke:var(--silver);fill:none;stroke-width:1.2}
+.links{display:flex;gap:clamp(18px,3vw,40px);font-size:.9rem;color:var(--mut)}
+.links a{transition:color .25s}.links a:hover{color:var(--fg)}
+@media(max-width:640px){.links a:not(:last-child){display:none}}
+
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:130px var(--pad) 90px;overflow:hidden;
+  background:radial-gradient(55% 60% at 78% 45%,var(--glow),transparent 70%),var(--mid)}
+.hero-copy{position:relative;z-index:2;max-width:760px;animation:in 1.3s .5s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{font-size:clamp(3.2rem,8.6vw,7.6rem);letter-spacing:-.015em}
+.hero p{max-width:30em;margin:30px 0 40px;color:var(--mut);font-size:clamp(1rem,1.5vw,1.2rem)}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;padding:15px 30px;border:1px solid var(--silver);font-size:.92rem;font-weight:500;letter-spacing:.04em;transition:background .3s,color .3s,border-color .3s}
+.btn.p{background:var(--fg);color:var(--mid);border-color:var(--fg)}
+.btn.p:hover{background:transparent;color:var(--fg)}
+.btn:not(.p):hover{background:var(--fg);color:var(--mid);border-color:var(--fg)}
+#gem{position:absolute;z-index:1;right:calc(var(--pad) * -.3);top:50%;width:min(58vw,760px);aspect-ratio:1;translate:0 -50%;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);overflow:visible}
+#gem path{fill:none;stroke:var(--silver);stroke-width:1.1;stroke-dasharray:1;stroke-dashoffset:1;
+  animation:draw 2s var(--d) cubic-bezier(.6,0,.2,1) forwards}
+#gem .f{stroke:none;fill:var(--silver);fill-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;animation:fill 2.4s 2.6s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fill{to{fill-opacity:.07}}
+@keyframes in{from{opacity:0;transform:translateY(18px)}}
+@media(max-width:800px){#gem{width:125vw;right:-48vw;opacity:.28}}
+
+section{padding:clamp(80px,12vw,160px) var(--pad)}
+.wrap{max-width:1240px;margin:0 auto}
+.house{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(32px,7vw,120px);align-items:start}
+.house h2{font-size:clamp(2.4rem,5vw,4.4rem)}
+.house p{margin:0 0 1.2em;color:var(--mut);max-width:34em}
+.house p:first-child{color:var(--fg);font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.55}
+@media(max-width:800px){.house{grid-template-columns:1fr}}
+
+.divs{background:var(--ink);border-block:1px solid var(--line)}
+.divs h2{font-size:clamp(2.2rem,4.6vw,4rem);margin-bottom:clamp(36px,6vw,80px)}
+.row{display:grid;grid-template-columns:1.1fr 1.3fr;gap:24px;align-items:baseline;padding:34px 0;border-top:1px solid var(--line);
+  position:relative;transition:padding-left .45s cubic-bezier(.2,.7,.2,1)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--silver);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.row h3{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+.row p{margin:0;color:var(--mut);max-width:30em}
+.row:hover,.row:focus-visible{padding-left:18px}
+.row:hover::after,.row:focus-visible::after{transform:scaleX(1)}
+@media(max-width:700px){.row{grid-template-columns:1fr;gap:8px;padding:28px 0}}
+
+.pr{display:grid;grid-template-columns:repeat(3,1fr)}
+.pr div{padding:0 clamp(20px,3.5vw,56px);border-left:1px solid var(--line)}
+.pr div:first-child{padding-left:0;border-left:0}
+.pr h3{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:14px}
+.pr p{margin:0;color:var(--mut)}
+@media(max-width:800px){.pr{grid-template-columns:1fr;gap:44px}.pr div{padding:0;border:0}}
+
+.cta{background:linear-gradient(180deg,var(--mid),var(--navy));text-align:center;border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(2.6rem,7vw,6rem);max-width:12em;margin:0 auto 24px}
+.cta p{color:var(--mut);margin:0 auto 40px}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:30px var(--pad);color:var(--mut);font-size:.85rem;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  #gem path{stroke-dashoffset:0}#gem .f{fill-opacity:.07}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a class="brand" href="#top" aria-label="Paragon House home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8.5 5v10L12 22l-8.5-5V7z"/><path d="M12 2v20M3.5 7l17 10M20.5 7l-17 10" opacity=".5"/></svg>
+    PARAGON HOUSE
+  </a>
+  <div class="links"><a href="#house">The House</a><a href="#divisions">Divisions</a><a href="#principles">Principles</a><a href="#contact">Contact</a></div>
+</nav>
+
+<header class="hero" id="top">
+  <svg id="gem" viewBox="0 0 600 600" aria-hidden="true"></svg>
+  <div class="hero-copy">
+    <h1>Many crafts.<br>One standard.</h1>
+    <p>Paragon House is a technology and business group building at the highest standard, across software, security, intelligence, education, and play.</p>
+    <div class="btns"><a class="btn p" href="#divisions">Explore the divisions</a><a class="btn" href="#contact">Get in touch</a></div>
+  </div>
+</header>
+
+<section id="house">
+  <div class="wrap house">
+    <h2>One house.<br>Five disciplines.</h2>
+    <div>
+      <p>We are a group of ventures held to a single measure: is this the best it can be?</p>
+      <p>Each division works on its own craft, shares one discipline, and builds toward the same ambition: work that stands up anywhere in the world. A paragon is a model of excellence, and that is the bar we set for everything that carries our name.</p>
+    </div>
+  </div>
+</section>
+
+<section class="divs" id="divisions">
+  <div class="wrap">
+    <h2>The divisions</h2>
+    <a class="row" href="#contact"><h3>Paragon Dev</h3><p>Websites and digital products for businesses that mean to be taken seriously.</p></a>
+    <a class="row" href="#contact"><h3>Paragon Security</h3><p>Network and wireless auditing, hardening, and security research.</p></a>
+    <a class="row" href="#contact"><h3>Paragon AI</h3><p>Assistants and automation that keep a business running around the clock.</p></a>
+    <a class="row" href="#contact"><h3>Paragon Learn</h3><p>Courses and tutorials that turn knowledge into capability.</p></a>
+    <a class="row" href="#contact"><h3>Paragon Games</h3><p>Interactive worlds designed for communities.</p></a>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap pr">
+    <div><h3>Precision</h3><p>Details are the product. We finish what others leave rough.</p></div>
+    <div><h3>Integrity</h3><p>Clear scope, honest timelines, and work we are willing to put our name on.</p></div>
+    <div><h3>Reach</h3><p>Built in Nigeria, designed for the world.</p></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Build with a higher standard.</h2>
+    <p>Tell us what you are building.</p>
+    <a class="btn p" href="https://mail.google.com/mail/?view=cm&to=paragonhouse205@gmail.com&su=Hello%20Paragon%20House">Get in touch</a>
+  </div>
+</section>
+
+<footer><span>&copy; 2026 Paragon House</span><span>Nigeria, building for the world</span></footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function sc(){nav.classList.toggle('s',window.scrollY>40)}
+  sc();window.addEventListener('scroll',sc,{passive:true});
+
+  var s=document.getElementById('gem'),N='http://www.w3.org/2000/svg',C=300,i=0;
+  function P(r,a){a=a*Math.PI/180;return[C+r*Math.cos(a),C+r*Math.sin(a)]}
+  function add(pts,close,cls){
+    var p=document.createElementNS(N,'path');
+    p.setAttribute('d','M'+pts.map(function(q){return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join('L')+(close?'Z':''));
+    p.setAttribute('pathLength','1');
+    if(cls)p.setAttribute('class',cls);
+    p.style.setProperty('--d',(i++*0.08)+'s');
+    s.appendChild(p);
+  }
+  var O=[],I=[],k;
+  for(k=0;k<8;k++){O.push(P(250,45*k+22.5));I.push(P(120,45*k))}
+  add(O,true,'f');add(O,true);add(I,true);
+  for(k=0;k<8;k++){add([I[k],O[(k+7)%8]]);add([I[k],O[k]])}
+  var G=[];for(k=0;k<8;k++)G.push(P(185,45*k+22.5));
+  add(G,true);
+  var c=document.createElementNS(N,'circle');c.setAttribute('cx',C);c.setAttribute('cy',C);c.setAttribute('r',286);
+  c.setAttribute('fill','none');c.setAttribute('stroke','var(--line)');c.setAttribute('stroke-width','1');s.appendChild(c);
+
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&matchMedia('(hover:hover)').matches){
+    document.addEventListener('pointermove',function(e){
+      var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+      s.style.transform='rotate('+(x*7).toFixed(2)+'deg) translate('+(x*-14).toFixed(1)+'px,'+(y*-14).toFixed(1)+'px)';
+    },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
